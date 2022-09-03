@@ -35,9 +35,13 @@ const loadNews = async (id) => {
 }
 
 const displayNews = (idData) => {
-    // console.log(idData[0].author)
+    // console.log(idData.length)
+    
+    const newsCount= idData.length
     const getPostHolder = document.getElementById("post-holder-id")
     getPostHolder.innerHTML = ''
+    // const newsCategoriesName= document.getElementById("")
+    // console.log(newsCategoriesName)
     idData.forEach(data => {
         const createDiv = document.createElement("div")
         // newsPost Start 
@@ -94,11 +98,15 @@ const displayNews = (idData) => {
         `
         // NewsPost End 
         getPostHolder.appendChild(createDiv)
-
+        // ADDing News Count 
+        const newsCountHolder= document.getElementById("news-count")
+        newsCountHolder.innerText=`${newsCount}`
+        // const newsCountCategoryName= document.getElementById("news-count-category-name")
+        // newsCountCategoryName.innerText=`s`
     })
 }
 
-loadNews()
+loadNews(8)
 
 loadCategories()
 
