@@ -54,6 +54,7 @@ const displayNews = (idData) => {
                     <img src="${data.thumbnail_url}" class="img-fluid" alt="">
                 </div>
             </div>
+            <!-- News Post Start -->
             <div class="col-9 post-body">
                 <div class="my-3 me-3">
                     <h4>${data.title}</h4>
@@ -68,14 +69,14 @@ const displayNews = (idData) => {
                                 <img src="${data.author ? data.author.img : "No Image"}" class="img-fluid" alt="">
                             </div>
                             <div class="author-info ms-3 align-items-center ">
-                                <h6 class="mb-0 fw-bold">${(data.author) ? (data.author.name === null ? "No Data" : data.author.name) : 'No Data'}</h6>
-                                <p class="text-secondary mb-0">${(data.author.published_date)}</p>
+                                <h6 class="mb-0 fw-bold">${(data.author) ? (data.author.name === null ? "No Data Found" : data.author.name) : 'No Data Found'}</h6>
+                                <p class="text-secondary mb-0">${(data.author) ? (data.author.published_date === null ? "No Data Found" : data.author.published_date) : 'No Data Found'}</p>
                             </div>
                         </div>
-
+                
                         <div class="view-counter align-items-center ">
                             <span><i class="fa fa-eye" aria-hidden="true"></i></span>
-                            <span class="fw-bold">${data.total_view ? data.total_view : "No Data"}</span>
+                            <span class="fw-bold">${data.total_view ? data.total_view : "No Data Found"}</span>
                         </div>
 
                         <div class="post-icons">
@@ -86,10 +87,56 @@ const displayNews = (idData) => {
                             <span><i class="fa fa-star-half" aria-hidden="true"></i></span>
                         </div>
 
+                        <!-- News Details Button -->
                         <div class="modal-button">
-                            <button><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                         </div>
-                    </div>
+                        
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="news-modal-details" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="news-modal-details">${data.title}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                              <h6 class="mb-0 fw-bold">${(data.author) ? (data.author.name === null ? "No Data Found" : data.author.name) : 'No Data Found'}</h6>
+                              <p class="text-secondary mb-0">${(data.author) ? (data.author.published_date === null ? "No Data Found" : data.author.published_date) : 'No Data Found'}</p>
+                              <br>
+                              <p>${(data.details)}</p>
+
+                              
+                            <!-- Modal Views and Icons -->
+                            <div class="post-footer d-flex   align-items-center ">
+                                <div class="view-counter align-items-center text-danger me-5">
+                                    <span><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                    <span class="fw-bold">15M</span>
+                                </div>
+
+                                <div class="post-icons text-danger">
+                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-star-half" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        
+
+
+
                 </div>
             </div>
         </div>
