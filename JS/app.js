@@ -84,7 +84,7 @@ const displayNews = (idData) => {
                                 <img src="${data.author ? data.author.img : "No Image"}" class="img-fluid" alt="">
                             </div>
                             <div class="author-info ms-3 align-items-center ">
-                                <h6 class="mb-0 fw-bold">${(data.author) ? (data.author.name === null ? "No Data Found" : data.author.name) : 'No Data Found'}</h6>
+                                <h6 class="mb-0 fw-bold">${((data.author) ? (data.author.name === null ? "No Data Found" : data.author.name) : 'No Data Found') || ((data.author) ? (data.author.name === '' ? "No Data Found" : data.author.name) : 'No Data Found')}</h6>
                                 <p class="text-secondary mb-0">${(data.author) ? (data.author.published_date === null ? "No Data Found" : data.author.published_date) : 'No Data Found'}</p>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ const displayNews = (idData) => {
 
                         <!-- News Details Button -->
                         <div class="modal-button">
-                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                            <button onclick="modalDetailsLoad('${data._id}')" id="modal-details-id" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                         </div>
                         
 
@@ -113,31 +113,14 @@ const displayNews = (idData) => {
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="news-modal-details">${data.title}</h5>
+                                <h5 class="modal-title" id="news-modal-details"></h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <div class="modal-body">
-                              <h6 class="mb-0 fw-bold">${(data.author) ? (data.author.name === null ? "No Data Found" : data.author.name) : 'No Data Found'}</h6>
-                              <p class="text-secondary mb-0">${(data.author) ? (data.author.published_date === null ? "No Data Found" : data.author.published_date) : 'No Data Found'}</p>
-                              <br>
-                              <p>${(data.details)}</p>
+                              <div id="modal-body-id" class="modal-body">
+                              
 
                               
-                            <!-- Modal Views and Icons -->
-                            <div class="post-footer d-flex   align-items-center ">
-                                <div class="view-counter align-items-center text-danger me-5">
-                                    <span><i class="fa fa-eye" aria-hidden="true"></i></span>
-                                    <span class="fw-bold">15M</span>
-                                </div>
-
-                                <div class="post-icons text-danger">
-                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
-                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
-                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
-                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
-                                    <span><i class="fa fa-star-half" aria-hidden="true"></i></span>
-                                </div>
-                            </div>
+                            
 
 
                               </div>
@@ -162,14 +145,16 @@ const displayNews = (idData) => {
         getPostHolder.appendChild(createDiv)
         // ADDing News Count 
         const newsCountHolder= document.getElementById("news-count")
-        newsCountHolder.innerText=`${(newsCount === false) ? "No News Found" : newsCount}`
+        newsCountHolder.innerText=`${newsCount ? newsCount : "No News Found" }`
         // const newsCountCategoryName= document.getElementById("news-count-category-name")
         // newsCountCategoryName.innerText=`s`
         // console.log(newsCount)
     })
     // Stoping Spiner 
+    toggleSpinner(false)
+  
+   
 
-   toggleSpinner(false)
 }
 
 const toggleSpinner =isSpine => {
@@ -182,6 +167,50 @@ const toggleSpinner =isSpine => {
     }
 }
 
+
+const modalDetailsLoad =async(news_id) => {
+    try {
+        const url= `https://openapi.programming-hero.com/api/news/${news_id}`
+    // const url= `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`
+    const res = await fetch(url)
+    const data = await res.json()
+    displayModalDetails(data.data[0])
+    }
+    catch {
+        console.log(error)
+    }
+}
+
+const displayModalDetails = (data) => {
+    const modalTitle= document.getElementById("news-modal-details")
+    modalTitle.innerText=`${data.title}`
+    const modalBody= document.getElementById("modal-body-id")
+    modalBody.innerHTML=`
+    <img class="img-fluid" src="${data.image_url}" alt="">
+    <h6 class="mb-0 fw-bold">${((data.author) ? (data.author.name === null ? "No Data Found" : data.author.name) : 'No Data Found') || ((data.author) ? (data.author.name === '' ? "No Data Found" : data.author.name) : 'No Data Found')}</h6>
+    <p class="text-secondary mb-0">${(data.author) ? (data.author.published_date === null ? "No Data Found" : data.author.published_date) : 'No Data Found'}</p>
+    <br>
+    <p>${(data.details)}</p>
+    
+
+    <!-- Modal Views and Icons -->
+                            <div class="post-footer d-flex   align-items-center ">
+                                <div class="view-counter align-items-center text-danger me-5">
+                                    <span><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                    <span class="fw-bold">${data.total_view}</span>
+                                </div>
+
+                                <div class="post-icons text-danger">
+                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-star-half" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+    
+    `
+}
 
 loadNews(8)
 
