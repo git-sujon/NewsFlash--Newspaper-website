@@ -64,13 +64,13 @@ const displayNews = (idData) => {
         createDiv.innerHTML = `
         <div class="mb-4">
         <div class="row  bg-white">
-            <div class="col-3 post-thumb">
+            <div class="col-12 col-lg-3 post-thumb">
                 <div class="m-3 rounded">
-                    <img src="${data.thumbnail_url}" class="img-fluid" alt="">
+                    <img src="${data.thumbnail_url}" class="img-fluid w-100" alt="">
                 </div>
             </div>
             <!-- News Post Start -->
-            <div class="col-9 post-body">
+            <div class="col-12 col-lg-9 post-body">
                 <div class="my-3 me-3">
                     <h4>${data.title}</h4>
                     <p>${(data.details).slice(0, 300)}<span  class="d-sm-none">...</span></p>
