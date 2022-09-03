@@ -4,6 +4,7 @@ const loadCategories = async () => {
         const res = await fetch(url)
         const data = await res.json()
         findCategories(data.data.news_category)
+       
     }
     catch {
         console.log(error)
@@ -13,7 +14,7 @@ const loadCategories = async () => {
 const findCategories = categories => {
     const categoriesHolder = document.getElementById("all-categories")
     categories.forEach(category => {
-        // console.log(category.category_name)
+        // console.log(category)
         const createCategory = document.createElement("div")
         createCategory.innerHTML = `<p onclick="loadNews(${category.category_id})" class="me-4">${category.category_name}</p>`
         categoriesHolder.append(createCategory)
@@ -37,15 +38,26 @@ const loadNews = async (id) => {
 const displayNews = (idData) => {
     // console.log(idData.length)
     
-    const newsCount= idData.length
+    let newsCount= idData.length
+   
+    // if(newsCount === 0) {
+    //     newsCount=newsCount+1
+    // }
+    //  console.log(newsCount)
     const getPostHolder = document.getElementById("post-holder-id")
     getPostHolder.innerHTML = ''
     // const newsCategoriesName= document.getElementById("")
-    // console.log(newsCategoriesName)
+    
+    const totalViewCount=[]
+    
     idData.forEach(data => {
         const createDiv = document.createElement("div")
         // newsPost Start 
-        // console.log(data)
+        // console.log(data.total_view)
+       
+        totalViewCount.push(data.total_view)
+        
+        
         createDiv.innerHTML = `
         <div class="mb-4">
         <div class="row  bg-white">
@@ -147,10 +159,17 @@ const displayNews = (idData) => {
         getPostHolder.appendChild(createDiv)
         // ADDing News Count 
         const newsCountHolder= document.getElementById("news-count")
-        newsCountHolder.innerText=`${newsCount}`
+        newsCountHolder.innerText=`${(newsCount === false) ? "No News Found" : newsCount}`
         // const newsCountCategoryName= document.getElementById("news-count-category-name")
         // newsCountCategoryName.innerText=`s`
+        // console.log(newsCount)
     })
+
+    // sorting in Descending 
+    totalViewCount.sort( (a,b) => b-a )
+    
+    
+   
 }
 
 loadNews(8)

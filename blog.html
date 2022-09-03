@@ -1,36 +1,547 @@
-<div class="mb-4">
-    <div class="row  bg-white">
-        <div class="col-3 post-thumb">
-            <div class="m-3 rounded">
-                <img src="https://i.ibb.co/QnwC4sG/unsplash-Eh-Tc-C9s-YXsw-11.png" class="img-fluid" alt="">
-            </div>
-        </div>
-        <div class="col-9 post-body">
-            <div class="my-3 me-3">
-                <h4>Biden Pledges Nearly $3 Billion To Ukraine In Largest U.S. Military Aid Package Yet</h4>
-                <p>Wednesday, August 24, 2022 | Tag Cloud Tags: Biden, EU, Euro, Europe, Joe Biden, Military, News, Russia, Security, UK, Ukraine, United States, Worthy News (Worthy News) – U.S. President Joe Biden has announced nearly $3 billion in new U.S. military aid for Kyiv</p>
-                <p> UK, Ukraine, United States, Worthy News (Worthy News) – U.S. President Joe Biden has announced nearly $3 billion in new U.S. military aid for Kyiv</p>
-            </div>
-            <div>
+<!DOCTYPE html>
+<html lang="en">
 
-                <!-- Modal Views and Icons -->
-                <div class="post-footer d-flex justify-content-between  align-items-center ">
-                    <div class="view-counter align-items-center ">
-                        <span><i class="fa fa-eye" aria-hidden="true"></i></span>
-                        <span class="fw-bold">15M</span>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsFlash</title>
 
-                    <div class="post-icons">
-                        <span><i class="fa fa-star" aria-hidden="true"></i></span>
-                        <span><i class="fa fa-star" aria-hidden="true"></i></span>
-                        <span><i class="fa fa-star" aria-hidden="true"></i></span>
-                        <span><i class="fa fa-star" aria-hidden="true"></i></span>
-                        <span><i class="fa fa-star-half" aria-hidden="true"></i></span>
+    <!-- fontAwesome Link -->
+    <script src="https://kit.fontawesome.com/a32a3682ff.js" crossorigin="anonymous"></script>
+
+    <!-- Boostrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- Bootstrap CSS External  -->
+    <!-- <link rel="stylesheet" href="./CSS/bootstrap.min.css"> -->
+    <!-- External CSS  -->
+    <link rel="stylesheet" href="./CSS/style.css">
+
+</head>
+
+<body class="bg-light">
+
+    <header class="container ">
+
+        <!-- NavBar Start -->
+        <nav class="navbar navbar-expand-lg my-lg-4 my-0 ">
+            <div class="container-fluid">
+                <a class="navbar-brand text-danger fw-bolder" href="#"><span class="text-secondary">News</span>Flash</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link fw-bold active text-danger" aria-current="page"
+                                href="index.html">News</a>
+                        </li>
+                        <li class="nav-item mx-3 fw-bold">
+                            <a class="nav-link " href="blog.html">Blog</a>
+                        </li>
+
+                    </ul>
+                    <div class="Nab-img mx-3">
+                        <img src="./Image/Face-icon.jpg" class=" img-thumbnail" alt="">
                     </div>
                 </div>
             </div>
+        </nav>
+        <!-- NavBar End -->
+        <!-- hr line  -->
+        <hr>
+
+
+        <section>
+            <div class="bg-white py-3 ps-3">
+                <span class="fw-bold text-secondary"><span id="news-count">4</span> Q/A <span
+                        id="news-count-category-name" class="text-danger"></span>Found</span>
+            </div>
+        </section>
+
+        <section>
+            <!-- Catagoris Adding  -->
+
+            <div class=" fw-bolder  h5 my-5 text-secondary">
+                <div class=" flex-wrap  " id="all-categories">
+                    <button href="#q-1" class="btn btn-outline-danger m-4">Question 1</button>
+                    <button href="#q-2" class="btn btn-outline-danger m-4">Question 2</button>
+                    <button href="#collapseTwo" class="btn btn-outline-danger m-4">Question 3</button>
+                    <button href="#collapseTwo" class="btn btn-outline-danger m-4">Question 4</button>
+                    <!-- all categories loading  -->
+                </div>
+            </div>
+        </section>
+    </header>
+
+
+
+    <!-- Acordian for Q/A  -->
+    <section class="container">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        What is the Difference between Var, Let , Const ?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div id="q-1">
+                            <p>There are three keywords in JavaScript that can be used to declare variables: let, var,
+                                and const. Each keyword has different rules and implications for how the variables they
+                                create can be used.</p>
+
+                            <br>
+                            <p>
+                                <strong>let:</strong> The let keyword declares a block-scoped local variable, optionally
+                                initializing it to a value.
+                                Block-scoped means that the variable is only available within the block it was declared
+                                in, which is usually denoted by curly braces {}.
+                            </p>
+                            <p>
+
+                                <strong>var:</strong> The var keyword declares a function-scoped or global variable,
+                                optionally initializing it to a value.
+                                Function-scoped means that the variable is only available within the function it was
+                                declared in. Global variables are available throughout your entire code.
+                            </p>
+
+                            <p>
+                                <strong>const: </strong> The const keyword declares a block-scoped, immutable constant
+                                variable, i.e. a variable that can’t be reassigned.
+                                Constants are also called “immutable variables”, but that’s a bit of a misnomer since
+                                they are actually variables – just ones that can’t be reassigned.
+                            </p>
+                        </div>
+                        <div>
+                            <h4>Difference between them:</h4>
+                            <br>
+                            <p>The var keyword is the oldest way of declaring variables in JavaScript and is supported
+                                by all browsers. The let and const keywords are newer additions to the language and are
+                                not supported by older browsers.
+
+                                If you need to support older browsers, you can use var instead of let or const. If you
+                                don’t need to support older browsers, you can use let or const. If you want your
+                                variable to be immutable, use const.</p>
+                            <p>Here are some examples:</p>
+<pre>var x = 1;
+let y = 2;
+const z = 3;
+    
+x = 4; //OK
+y = 5; //OK
+z = 6; //Error</pre>
+                            <p>As you can see, var and let variables can be reassigned, but const variables can not.</p>
+                            <br>
+                            <p><strong>Another difference</strong> between var and let/const is that var variables are
+                                function-scoped, while let and const variables are block-scoped.</p>
+                            <p>
+                                This means that var variables are only available within the function they were declared
+                                in. For example:</p>
+                            <pre>
+function foo() {
+    var x = 1;
+}
+
+foo();
+console.log(x); // ReferenceError: x is not defined
+
+function foo() {
+    var x = 1;
+}
+
+foo();
+console.log(x); // ReferenceError: x is not defined
+
+</pre>
+                            <p>
+                                On the other hand, let and const variables are only available within the block they were
+                                declared in. For example:
+                            </p>
+<pre>
+.function foo() {
+    let y = 2;
+    const z = 3;
+    }
+
+    foo();
+    console.log(y); // ReferenceError: y is not defined
+    console.log(z); // ReferenceError: z is not defined
+
+    function foo() {
+    let y = 2;
+    const z = 3;
+    }
+
+    foo();
+    console.log(y); // ReferenceError: y is not defined
+    console.log(z); // ReferenceError: z is not define
+</pre>
+                            <br>
+                            <p>So, to sum up, the main differences between var, let and const are:
+                            </p>
+                            <ul>
+                                <li>var is function-scoped while let and const are block-scoped.</li>
+                                <li>var variables can be reassigned while let and const variables can not.</li>
+                                <li>var variables are declared using the var keyword while let and const variables are
+                                    declared</li>
+                                <li>
+                                    using the let and const keywords respectively.</li>
+                                <li> const variables are immutable while let and var variables are not.
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        What is the Difference Between Arrow function and Regular function?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <h4 id="q-2">1. Syntax</h4>
+
+                        <p> One very basic difference is that the Regular Functions uses function keyword but Arrow
+                            Functions don't inspite it uses arrow symbol(=>).</p>
+
+
+
+                        <h4>2. this keyword</h4>
+
+                        <p> Regular function have its their own this context, but the Arrow function don't have their
+                            own. Inside an Arrow function this value hold the this value of outer function.</p>
+
+                        <pre>
+let user = { 
+    userName: "Parth", 
+    greetMessage1:() => { 
+        console.log("Hello " + this.userName); // Output: Hello undefined
+    }, 
+    greetMessage2(){        
+        console.log("Good Morning " + this.userName); // Output: Good Morning Parth 'this' binding works here
+    }   
+ }; 
+user.greetMessage1(); 
+user.greetMessage2();
+                       </pre>
+
+
+
+                        <p>In the above example, We can see the greetMessage1(Arrow Functions) don't have its own this,
+                            But the greetMessage2(Regular Function) have it's own this due to which we can see the
+                            userName value in output.</p>
+
+
+
+                        <h4>3. Using new keyword</h4>
+
+                        <p> Regular function are constructible and callable.As it are constructible, they can be called
+                            using the 'new' keyword. But the arrow functions are only callable and not constructible.
+                            Due to which we will get a run-time error when trying to construct a non-constructible arrow
+                            functions using the new keyword.</p>
+
+
+                        <pre>
+.// Using regular function
+let x = function(){ 
+    console.log(arguments); 
+}; 
+console.log(new x (1,2,3)); // Output: Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+ 
+// Using Arrow function
+let x = ()=> { 
+    console.log(arguments);
+};
+new x(1,2,3); // TypeError: "x is not a constructor"
+                       </pre>
+
+
+                        <h4> 4. Implicit return</h4>
+                        <p>
+                            While working with Regular functions return expression statement is used to return the
+                            result from the function. It return statement is not available inside the function then
+                            udefined is returned from the function. But with Arrow function there is one exception where
+                            return is not mendatory to return result from the functions. See the example below:
+
+                        </p>
+                        <pre>
+.// With Regular functions
+function sum(a, b) {
+
+  return a+b;
+
+}
+
+sum(10,20); // Outpu: 30
+
+// With Arrow functions
+
+const sum = (a, b) =>a+b;
+
+sum(10,20); //Output: 30
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Difference between Map() , forEach(), filter(), Find()?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="mb-3">
+                            <h4>1. Map</h4>
+                            <p> One of my favourite and most used array method of all time. As a ReactJS developer I use
+                                map a lot inside my application UI.
+
+                                Map like filter & foreach takes a callback and run it against every element on the array
+                                but whats makes it unique is it generate a new array based on your existing array.</p>
+
+                            <small> Let’s understand map with an example</small>
+
+                            <pre>
+.var sample = [1, 2, 3] // i am never gonna change Boo! Yeah
+// es5
+var mapped = sample.map(function(elem) {
+    return elem * 10;
+})
+// es6
+let mapped = sample.map(elem => elem * 10)
+console.log(mapped);
+/* output */
+[10, 20, 30]
+                        </pre>
+
+                            <p> Map ran through every element of the array, multiplied it to 10 and returned the element
+                                which will be going to store inside our resulting array.
+
+                                Like filter, map also returns an array. The provided callback to map modifies the array
+                                elements and save them into the new array upon completion that array get returned as the
+                                mapped array. </p>
+                        </div>
+
+                        <div class="mb-3">
+                            <h4>2. Foreach</h4>
+                            <p> The easy one right ? we all know why this method is used for and even you don’t know
+                                about
+                                this method the name pretty much explains everything.
+
+                                Foreach takes a callback function and run that callback function on each element of
+                                array
+                                one by one.</p>
+
+                            <pre>
+.var sample = [1, 2, 3];
+// es5
+sample.forEach(function (elem, index){
+console.log(elem + ' comes at ' + index);
+})
+// es6
+sample.forEach((elem, index) => `${elem} comes at ${index}`)
+/*
+output
+1 comes at 0
+2 comes at 1
+3 comes at 2
+*/
+                           </pre>
+                            <p>
+                                For every element on the array we are calling a callback which gets element & its index
+                                provided by foreach.
+
+                                Basically forEach works as a traditional for loop looping over the array and providing
+                                you
+                                array elements to do operations on them.
+
+                                okay! so clear ? then let’s filter some arrays.
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <h4>3. Filter</h4>
+                            <p>Whenever you have to filter an array Javascript inbuilt method to filter your array is
+                                the right choice to use. Filter let you provide a callback for every element and returns
+                                a filtered array.
+
+                                The main difference between forEach and filter is that forEach just loop over the array
+                                and executes the callback but filter executes the callback and check its return value.
+                                If the value is true element remains in the resulting array but if the return value is
+                                false the element will be removed for the resulting array.
+                            </p>
+                            <pre>
+.var sample = [1, 2, 3] // yeah same array
+// es5
+var result = sample.filter(function(elem){
+    return elem !== 2;
+})
+console.log(result)
+// es6
+var result = sample.filter(elem => elem !== 2)
+/* output */
+[1, 3]
+                            </pre>
+                            <p>See how easy it was. We passed a callback to filter which got run against every element
+                                in the array. In the callback we checked if the element !== 2 if the condition fails (
+                                when elem was equal to 1 or 3 ) include them into the resulting array else don’t include
+                                the element in the resulting array.
+
+                                Also take notice filter does not update the existing array it will return a new filtered
+                                array every time.</p>
+                        </div>
+                        <div>
+                            <h4>4. Find</h4>
+                            <p>The find() method returns the value of the first array element that satisfies the
+                                provided test function.</p>
+
+                            <small>Example</small>
+                            <pre>
+    let numbers = [1, 3, 4, 9, 8];
+
+// function to check even number
+function isEven(element) {
+  return element % 2 == 0;
+}
+
+// get the first even number
+let evenNumber = numbers.find(isEven);
+console.log(evenNumber);
+
+// Output: 4
+
+</pre>
+
+                            <p>The syntax of the find() method is:</p>
+
+<pre>arr.find(callback(element, index, arr),thisArg)</pre>
+                            <small>Here, arr is an array.</small>
+
+
+                            <p>The find() method takes in:</p>
+
+                            <li><strong>callback</strong> - Function to execute on each element of the array. It takes
+                                in:</li>
+                            <p><i class="fa fa-arrow-right " aria-hidden="true"></i> <strong>callback</strong> - The
+                                current element of array.</p>
+                            <li><strong>thisArg (optional)</strong> - Object to use as this inside callback.</li>
+                            <br>
+                            <h6>find() Return Value</h6>
+                            <p>Returns the value of the first element in the array that satisfies the given function.
+                                Returns undefined if none of the elements satisfy the function.</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingfour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                        Why do we use Template String?
+                    </button>
+                </h2>
+                <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Before ES6, you use single quotes (') or double quotes (") to wrap a string literal. And the
+                            strings have very limited functionality.
+
+                            To enable you to solve more complex problems, ES6 template literals provide the syntax that
+                            allows you to work with strings more safely and cleanly.</p>
+                        <br>
+
+                        <p>In ES6, you create a template literal by wrapping your text in backticks (`) as follows:</p>
+ <pre>
+ let simple = `This is a template literal`;
+ </pre>
+                        <br>
+                        <p>We get those following features:</p>
+                        <br>
+                        <ul>
+                            <li>A multiline string: a string that can span multiple lines.</li>
+                            <li>String formatting: the ability to substitute part of the string for the values of
+                                variables or expressions. This feature is also called string interpolation.</li>
+                            <li>HTML escaping: the ability to transform a string so that it is safe to include in HTML.
+                            </li>
+                        </ul>
+                        <br>
+                        <br>
+
+                        <p>Following example:</p>
+                        <br>
+                        <pre>
+. function format(literals, ...substitutions) {
+    let result = '';
+
+    for (let i = 0; i  substitutions.length; i++) {
+        result += literals[i];
+        result += substitutions[i];
+    }
+    // add the last literal
+    result += literals[literals.length - 1];
+    return result;
+}
+
+let quantity = 9,
+    priceEach = 8.99,
+    result = format`${quantity} items cost $${(quantity * priceEach).toFixed(2)}.`;
+
+console.log(result); // 9 items cost $80.91.
+                        </pre>
+                        <br>
+                        <p>In this example, the format() function accepts three arguments: the literals array and two
+                            other arguments stored in the substitutions array.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-</div>
+    </section>
 
 
+
+
+
+
+
+
+    <!-- Footer Section  -->
+    <footer class="mt-5 pb-2 pt-5 bg-white">
+        <p class="text-center display-5 text-secondary"><i class="fa fa-copyright" aria-hidden="true"> <a
+                    class="navbar-brand text-danger fw-bolder display-6" href="#"><span
+                        class="text-secondary ">News</span>Flash</a></i></p>
+    </footer>
+
+
+
+
+
+
+    <!-- --------------------------------------------------------------------------------------- -->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS External -->
+    <!-- <script src="./JS/bootstrap.min.js"></script> -->
+    <!-- External JS App.js  -->
+</body>
+
+</html>
