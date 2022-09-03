@@ -143,13 +143,15 @@ const displayNews = (idData) => {
         `
         // NewsPost End 
         getPostHolder.appendChild(createDiv)
-        // ADDing News Count 
-        const newsCountHolder= document.getElementById("news-count")
-        newsCountHolder.innerText=`${newsCount ? newsCount : "No News Found" }`
-        // const newsCountCategoryName= document.getElementById("news-count-category-name")
-        // newsCountCategoryName.innerText=`s`
-        // console.log(newsCount)
+        
+     
     })
+
+    // ADDing News Count 
+    const newsCountHolder= document.getElementById("news-count")
+    newsCountHolder.innerText=`${newsCount === 0 ? "No ": newsCount}`
+
+    
     // Stoping Spiner 
     toggleSpinner(false)
   
