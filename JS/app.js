@@ -16,7 +16,7 @@ const findCategories = categories => {
     categories.forEach(category => {
         // console.log(category)
         const createCategory = document.createElement("div")
-        createCategory.innerHTML = `<p onclick="loadNews(${category.category_id})" class="me-4">${category.category_name}</p>`
+        createCategory.innerHTML = `<p class="me-4 btn btn-outline-danger" onclick="loadNews(${category.category_id})" class="me-4">${category.category_name}</p>`
         categoriesHolder.append(createCategory)
     });
 }
@@ -37,6 +37,8 @@ const loadNews = async (id) => {
 
 const displayNews = (idData) => {
     // console.log(idData.length)
+    // sorting in Descending
+    idData.sort((a,b) => b.total_view-a.total_view)
     
     let newsCount= idData.length
    
@@ -47,15 +49,14 @@ const displayNews = (idData) => {
     const getPostHolder = document.getElementById("post-holder-id")
     getPostHolder.innerHTML = ''
     // const newsCategoriesName= document.getElementById("")
-    
-    const totalViewCount=[]
+   
     
     idData.forEach(data => {
         const createDiv = document.createElement("div")
         // newsPost Start 
         // console.log(data.total_view)
        
-        totalViewCount.push(data.total_view)
+        
         
         
         createDiv.innerHTML = `
@@ -70,8 +71,8 @@ const displayNews = (idData) => {
             <div class="col-9 post-body">
                 <div class="my-3 me-3">
                     <h4>${data.title}</h4>
-                    <p>${(data.details).slice(0, 300)}</p>
-                    <p>${(data.details).slice(300, 500)}...</p>
+                    <p>${(data.details).slice(0, 300)}<span  class="d-sm-none">...</span></p>
+                    <p  class="d-none d-md-block"><span>${(data.details).slice(300, 500)}</span>...</p>
                 </div>
                 <div>
                     <div class="post-footer d-flex justify-content-between  align-items-center ">
@@ -91,7 +92,7 @@ const displayNews = (idData) => {
                             <span class="fw-bold">${data.total_view ? data.total_view : "No Data Found"}</span>
                         </div>
 
-                        <div class="post-icons">
+                        <div class="post-icons d-none d-md-block">
                             <span><i class="fa fa-star" aria-hidden="true"></i></span>
                             <span><i class="fa fa-star" aria-hidden="true"></i></span>
                             <span><i class="fa fa-star" aria-hidden="true"></i></span>
@@ -165,9 +166,8 @@ const displayNews = (idData) => {
         // console.log(newsCount)
     })
 
-    // sorting in Descending 
-    totalViewCount.sort( (a,b) => b-a )
-    
+
+
     
    
 }
