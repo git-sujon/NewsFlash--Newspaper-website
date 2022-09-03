@@ -1,33 +1,109 @@
-const loadCategories = async() => {
-    const url='https://openapi.programming-hero.com/api/news/categories'
-    const res= await fetch(url)
-    const data= await res.json()
-    findCategories(data.data.news_category)
-}   
+const loadCategories = async () => {
+    const url = 'https://openapi.programming-hero.com/api/news/categories'
+    try {
+        const res = await fetch(url)
+        const data = await res.json()
+        findCategories(data.data.news_category)
+    }
+    catch {
+        console.log(error)
+    }
+}
 
 const findCategories = categories => {
-    const categoriesHolder=document.getElementById("all-categories")
+    const categoriesHolder = document.getElementById("all-categories")
     categories.forEach(category => {
         // console.log(category.category_name)
-        const createCategory= document.createElement("div")
-        createCategory.innerHTML=`<p onclick="loadNews(${category.category_id})" class="me-4">${category.category_name}</p>`
-        categoriesHolder.append(createCategory)   
+        const createCategory = document.createElement("div")
+        createCategory.innerHTML = `<p onclick="loadNews(${category.category_id})" class="me-4">${category.category_name}</p>`
+        categoriesHolder.append(createCategory)
     });
 }
 
-const loadNews = async() => {
-     const url=`https://openapi.programming-hero.com/api/news/category/01`
-    const res= await fetch(url)
-    const data= await res.json()
-    console.log(data)
-}
-loadNews()
+const loadNews = async (id) => {
+    // console.log(id)
 
+    try {
+        const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
+        const res = await fetch(url)
+        const data = await res.json()
+        displayNews(data.data)
+    }
+    catch {
+        console.log(error)
+    }
+}
+
+const displayNews = (idData) => {
+    // console.log(idData[0].author)
+    const getPostHolder = document.getElementById("post-holder-id")
+    getPostHolder.innerHTML = ''
+    idData.forEach(data => {
+        const createDiv = document.createElement("div")
+        // newsPost Start 
+        // console.log(data)
+        createDiv.innerHTML = `
+        <div class="mb-4">
+        <div class="row  bg-white">
+            <div class="col-3 post-thumb">
+                <div class="m-3 rounded">
+                    <img src="${data.thumbnail_url}" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="col-9 post-body">
+                <div class="my-3 me-3">
+                    <h4>${data.title}</h4>
+                    <p>${(data.details).slice(0, 300)}</p>
+                    <p>${(data.details).slice(300, 500)}...</p>
+                </div>
+                <div>
+                    <div class="post-footer d-flex justify-content-between  align-items-center ">
+
+                        <div class="author-details d-flex">
+                            <div class="author-img">
+                                <img src="${data.author ? data.author.img : "No Image"}" class="img-fluid" alt="">
+                            </div>
+                            <div class="author-info ms-3 align-items-center ">
+                                <h6 class="mb-0 fw-bold">${(data.author) ? (data.author.name === null ? "No Data" : data.author.name) : 'No Data'}</h6>
+                                <p class="text-secondary mb-0">${(data.author.published_date)}</p>
+                            </div>
+                        </div>
+
+                        <div class="view-counter align-items-center ">
+                            <span><i class="fa fa-eye" aria-hidden="true"></i></span>
+                            <span class="fw-bold">${data.total_view ? data.total_view : "No Data"}</span>
+                        </div>
+
+                        <div class="post-icons">
+                            <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-star-half" aria-hidden="true"></i></span>
+                        </div>
+
+                        <div class="modal-button">
+                            <button><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        `
+        // NewsPost End 
+        getPostHolder.appendChild(createDiv)
+
+    })
+}
+
+loadNews()
 
 loadCategories()
 
 
-x= {
+x = {
     "_id": "0282e0e58a5c404fbd15261f11c2ab6a",
     "others_info": {
         "is_todays_pick": false,
