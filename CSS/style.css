@@ -3,3 +3,10 @@
     height: 40px;
     border-radius: 50%;
 }
+
+.spinner {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

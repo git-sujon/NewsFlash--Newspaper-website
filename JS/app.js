@@ -23,7 +23,8 @@ const findCategories = categories => {
 
 const loadNews = async (id) => {
     // console.log(id)
-
+    // running sppiner
+    toggleSpinner(true)
     try {
         const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
         const res = await fetch(url)
@@ -36,6 +37,7 @@ const loadNews = async (id) => {
 }
 
 const displayNews = (idData) => {
+
     // console.log(idData.length)
     // sorting in Descending
     idData.sort((a,b) => b.total_view-a.total_view)
@@ -165,12 +167,21 @@ const displayNews = (idData) => {
         // newsCountCategoryName.innerText=`s`
         // console.log(newsCount)
     })
+    // Stoping Spiner 
 
-
-
-    
-   
+   toggleSpinner(false)
 }
+
+const toggleSpinner =isSpine => {
+    const spinnerHolder= document.getElementById("spinner-id")
+    if(isSpine) {
+        spinnerHolder.classList.remove("d-none")
+    }
+    else {
+        spinnerHolder.classList.add("d-none")
+    }
+}
+
 
 loadNews(8)
 
